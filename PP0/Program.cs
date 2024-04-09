@@ -7,7 +7,7 @@ namespace PP0
         static void Main(string[] args)
         {
             
-            bool exitMainMenu = false;
+            bool stayInMainMenu = true;
             do
             { 
                 LoginUtilities.MainLoginRegisterWindow();
@@ -15,18 +15,23 @@ namespace PP0
 
                 if (key == ConsoleKey.L)
                 {
-                    LoginUtilities.LoginCredentialsWindow();
+                    stayInMainMenu = !LoginUtilities.LoginCredentialsWindow();
+                    continue;
                 }
-                else if (key == ConsoleKey.R) {
-                    Console.WriteLine("Show Registration Window");
+                else if (key == ConsoleKey.R) 
+                {
+                    stayInMainMenu = !LoginUtilities.CreateNewAccountWindow();
+                    continue;
                 }
                 else if (key == ConsoleKey.X)
                 {
-                    exitMainMenu = true;
+                    stayInMainMenu = false;
                 }
 
-            } while (!exitMainMenu);
+            } while (stayInMainMenu);
+           
             
+
         }
     }
 }
