@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Channels;
 using System.Threading.Tasks;
 
 namespace PP0.StaticClasses
@@ -29,6 +30,19 @@ namespace PP0.StaticClasses
             Referrals = referrals;
             Prescriptions = prescriptions;
         }
+
+        public void DisplayVisit()
+        {
+            Console.WriteLine("Visit Details : ");
+            Console.WriteLine($"Date: {Date}");
+            Console.WriteLine($"Type : {Type}");
+            Console.WriteLine($"Doctor name: {DoctorName}");
+            Console.WriteLine($"Patient name: {PatientName}");
+            Console.WriteLine($"Description: {Description}");
+            Console.WriteLine($"Recomendations: {Recomendations}");
+            Console.WriteLine($"Referrals: {Referrals}");
+            Console.WriteLine($"Prescriptions: {Prescriptions}");
+        }   
     }
 
 
