@@ -6,17 +6,17 @@ using System.Text;
 using System.Threading.Channels;
 using System.Threading.Tasks;
 
-namespace PP0.StaticClasses
+namespace PP0.Models
 {
     internal class Visit
     {
-        public DateTime Date {  get; set; }
+        public DateTime Date { get; set; }
         public VisitType Type { get; set; }
         public string DoctorName { get; set; }
         public string PatientName { get; set; }
-        public string Description { get; set;}
+        public string Description { get; set; }
         public string Recomendations { get; set; }
-        public string Referrals {  get; set; }
+        public string Referrals { get; set; }
         public string Prescriptions { get; set; }
 
         public Visit(DateTime date, VisitType type, string doctorName, string patientName, string description, string recomendations, string referrals, string prescriptions)
@@ -42,7 +42,7 @@ namespace PP0.StaticClasses
             Console.WriteLine($"Recomendations: {Recomendations}");
             Console.WriteLine($"Referrals: {Referrals}");
             Console.WriteLine($"Prescriptions: {Prescriptions}");
-        }   
+        }
     }
 
 
