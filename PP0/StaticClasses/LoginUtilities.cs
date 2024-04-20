@@ -21,28 +21,37 @@ namespace PP0.StaticClasses
         internal static bool LoginCredentialsWindow()
         {
             bool nextStep;
-            if (nextStep = ProvideYourCredential("Please provide Login"))
-                if (nextStep = ProvideYourCredential("Please provide Password"))
-                    
-                    {
-                        Console.WriteLine("LOGGED SUCCESFULL!");
-                        Console.ReadKey();
-                        return true;
-                    }
+            string? output;
+            
+            if (nextStep = ProvideYourCredential("Please provide Login",out output))
+            {
+                if (nextStep = ProvideYourCredential("Please provide Password", out output))
+                {
+                    Console.WriteLine("LOGGED SUCCESFULL!");
+                    Console.ReadKey();
+                    return true;
+                }
                 else
+                {
                     return false;
+                }
+            }
             else
+            {
                 return false;
+            }
+                
             
 
         }
 
         internal static bool CreateNewAccountWindow() {
             bool nextStep;
-            if (nextStep = ProvideYourCredential(@"Please provide Login\Account Name"))
-                if (nextStep = ProvideYourCredential("Please provide Password"))
-                    if (nextStep = ProvideYourCredential("Please confirm Password"))
-                        if (nextStep = ProvideYourCredential("Please provide Role"))
+            string? output;
+            if (nextStep = ProvideYourCredential(@"Please provide Login\Account Name", out output))
+                if (nextStep = ProvideYourCredential("Please provide Password", out output))
+                    if (nextStep = ProvideYourCredential("Please confirm Password", out output))
+                        if (nextStep = ProvideYourCredential("Please provide Role", out output))
                          {
                             Console.WriteLine("ACCOUNT CREATED!");
                             Console.ReadKey();
@@ -57,7 +66,7 @@ namespace PP0.StaticClasses
                 return false;
         }
 
-        internal static bool ProvideYourCredential(string credentailType)
+        internal static bool ProvideYourCredential(string credentailType, out string? output)
         {
             Console.Clear();
             Console.WriteLine($"To go back to Main Login Window press 'Esc' Key.");
@@ -72,6 +81,7 @@ namespace PP0.StaticClasses
 
                 if (key.Key == ConsoleKey.Escape)
                 {
+                    output = null;
                     return false;
                 }
                 else if (key.Key == ConsoleKey.Enter)
@@ -80,6 +90,7 @@ namespace PP0.StaticClasses
                     Console.WriteLine($"{credentailType} provided: {input}");
                     
                     Console.ReadKey();
+                    output = input;
                     return true;
                 }
                 else {
