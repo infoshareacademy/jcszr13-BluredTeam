@@ -23,14 +23,12 @@ namespace PP0.StaticClasses
             bool nextStep;
             if (nextStep = ProvideYourCredential("Please provide Login"))
                 if (nextStep = ProvideYourCredential("Please provide Password"))
-                    if (nextStep = ProvideYourCredential("Please provide Role"))
+                    
                     {
                         Console.WriteLine("LOGGED SUCCESFULL!");
                         Console.ReadKey();
                         return true;
                     }
-                    else
-                        return false;
                 else
                     return false;
             else
