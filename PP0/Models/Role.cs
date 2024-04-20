@@ -10,6 +10,10 @@
             Id = id;
             Name = name;
         }
+        public Role()
+        {
+            
+        }
     }
 
 }
