@@ -25,8 +25,11 @@ namespace PP0.StaticClasses
             
             if (nextStep = ProvideYourCredential("Please provide Login",out output))
             {
+                Models.Login login = new (output);
                 if (nextStep = ProvideYourCredential("Please provide Password", out output))
                 {
+                    Models.Password password = new(output);
+                    //here implement method that loops through list of users.
                     Console.WriteLine("LOGGED SUCCESFULL!");
                     Console.ReadKey();
                     return true;
@@ -87,7 +90,7 @@ namespace PP0.StaticClasses
                 else if (key.Key == ConsoleKey.Enter)
                 {
                     Console.WriteLine();
-                    Console.WriteLine($"{credentailType} provided: {input}");
+                    Console.WriteLine($"provided: {input}");
                     
                     Console.ReadKey();
                     output = input;
