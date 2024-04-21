@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace PP0.Models
 {
-    internal class Visit
+    public class Visit
     {
         public DateTime Date { get; set; }
         public VisitType Type { get; set; }
