@@ -1,6 +1,6 @@
 ﻿namespace PP0.Enums
 {
-    internal enum VisitType
+    public enum VisitType
     {
         Stationary = 0,
         Telephone = 1,

@@ -1,4 +1,5 @@
 ﻿using PP0.StaticClasses;
+using System;
 
 namespace PP0
 {
@@ -6,21 +7,28 @@ namespace PP0
     {
         static void Main(string[] args)
         {
-            
+
             bool stayInMainMenu = true;
             do
-            { 
+            {
                 LoginUtilities.MainLoginRegisterWindow();
-                System.ConsoleKey key = Console.ReadKey().Key;
+                ConsoleKey key = Console.ReadKey().Key;
 
                 if (key == ConsoleKey.L)
                 {
                     stayInMainMenu = !LoginUtilities.LoginCredentialsWindow();
                     continue;
                 }
-                else if (key == ConsoleKey.R) 
+                else if (key == ConsoleKey.R)
                 {
                     stayInMainMenu = !LoginUtilities.CreateNewAccountWindow();
+                    continue;
+                }
+                else if (key == ConsoleKey.V)
+                {
+                    var result = VisitUtilities.CreateNewVisit();
+                    //TODO: Zapis result.visit do pliku
+                    stayInMainMenu = !result.stayInMainMenu;
                     continue;
                 }
                 else if (key == ConsoleKey.X)
@@ -29,8 +37,8 @@ namespace PP0
                 }
 
             } while (stayInMainMenu);
-           
-            
+
+
 
         }
     }
