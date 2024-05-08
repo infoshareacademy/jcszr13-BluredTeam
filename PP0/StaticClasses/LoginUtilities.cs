@@ -15,7 +15,7 @@ namespace PP0.StaticClasses
         internal static void MainLoginRegisterWindow()
         {
             Console.Clear();
-            Console.WriteLine($"Press 'L' for LOG INTO\nPress 'R' to REGISTER\nPress 'X' to abort");
+            Console.WriteLine($"Press 'L' for LOG INTO\nPress 'R' to REGISTER\nPress 'V' to CREATE VISIT\nPress 'X' to abort");
         } 
 
         internal static bool LoginCredentialsWindow()
