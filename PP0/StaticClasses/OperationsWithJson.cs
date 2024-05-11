@@ -17,5 +17,10 @@ namespace PP0.StaticClasses
             return JsonSerializer.Deserialize<List<T>>(streamJson, _options);
         }
 
+        internal static void SerializeToJson<T>(List<T> list, string fileName) { 
+                string jsonString = JsonSerializer.Serialize(list, _options);
+                File.AppendAllText(fileName, jsonString);
+        }
+
     }
 }
