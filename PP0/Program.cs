@@ -1,4 +1,5 @@
 ﻿using PP0.Models;
+using PP0.Services;
 using PP0.StaticClasses;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,14 @@ namespace PP0
                 }
                 else if (key == ConsoleKey.R)
                 {
-                    stayInMainMenu = !LoginUtilities.CreateNewAccountWindow();
+                    var prepUser = RegistrationMenu.MainRegistrationMenu();
+                                        
+                    UserRegistrationServices.SetAllUsers(users);
+                    UserRegistrationServices.CreateNewAccount(prepUser.user);
+                    users = UserRegistrationServices.GetAllUsers();
+                    OperationsWithJson.SerializeToJson(users, @"Files\UsersDb.json");
+
+                    stayInMainMenu = prepUser.stayInMainMenu;
                     continue;
                 }
                 else if (key == ConsoleKey.V)

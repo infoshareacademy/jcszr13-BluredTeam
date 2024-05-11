@@ -12,7 +12,7 @@ namespace PP0
 {
     internal static class RegistrationMenu
     {
-        public static bool MainRegistrationMenu()
+        public static (bool stayInMainMenu, User user) MainRegistrationMenu()
         {
             Console.Clear();
             Console.WriteLine($"Enter user details:");
@@ -25,7 +25,7 @@ namespace PP0
 
             User newUser = new User(login, password, roles);
             
-            return true;
+            return new(true,newUser);
         }
 
 
