@@ -3,16 +3,16 @@ using System.Collections.Generic;
 
 namespace PP0.Services
 {
-    internal class UserRegistrationServices
+    internal static class UserRegistrationServices
     {
-        private List<User> _users = new List<User>();
+        private static List<User> _users = new List<User>();
 
-        public void SetAllUsers(List<User> users) { _users = users; }
+        public static void SetAllUsers(List<User> users) { _users = users; }
 
-        public List<User> GetAllUsers() { return _users; }
+        public static List<User> GetAllUsers() { return _users; }
 
 
-        public User? GetUserByLogin(string login)
+        public static User? GetUserByLogin(string login)
         {
 
             foreach (var user in _users)
@@ -26,7 +26,7 @@ namespace PP0.Services
             return null;
         }
 
-        public bool CreateNewAccount(User user)
+        public static bool CreateNewAccount(User user)
         {
             if (_users.Count == 0 || GetUserByLogin(user.Login) is null)
             {
@@ -39,7 +39,7 @@ namespace PP0.Services
             }
         }
 
-        public string ValidateNewAccount(User user)
+        public static string ValidateNewAccount(User user)
         {
             if (user.Login == null || user.Password == null || user.Roles == null)
             {

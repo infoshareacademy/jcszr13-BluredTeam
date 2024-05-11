@@ -1,14 +1,16 @@
 ﻿using PP0.Enums;
 using PP0.Models;
+using PP0.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace PP0
 {
-    internal class RegistrationMenu
+    internal static class RegistrationMenu
     {
         public static bool MainRegistrationMenu()
         {
@@ -22,6 +24,7 @@ namespace PP0
             List<Role> roles = UserRoleList();
 
             User newUser = new User(login, password, roles);
+            
             return true;
         }
 
