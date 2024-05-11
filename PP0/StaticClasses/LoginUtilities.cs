@@ -18,7 +18,7 @@ namespace PP0.StaticClasses
             Console.WriteLine($"Press 'L' for LOG INTO\nPress 'R' to REGISTER\nPress 'V' to CREATE VISIT\nPress 'X' to abort");
         } 
 
-        internal static bool LoginCredentialsWindow()
+        internal static (bool,bool) LoginCredentialsWindow()
         {
             bool nextStep;
             string? output;
@@ -30,18 +30,26 @@ namespace PP0.StaticClasses
                 {
                     Models.Password password = new(output);
                     //here implement method that loops through list of users.
-                    Console.WriteLine("LOGGED SUCCESFULL!");
-                    Console.ReadKey();
-                    return true;
+                    bool ifUserExists = DatabaseFunctions.CheckAccess(Program.users, login.AccountName, password.Pass);
+                    if (ifUserExists)
+                    {
+                        Console.WriteLine("LOGGED SUCCESSFULL (: ");
+                        return (true, true);
+                    }
+                    else
+                    {
+                        Console.WriteLine("WRONG CREDENTIALS!!!");
+                        return (false, false);
+                    }
                 }
                 else
                 {
-                    return false;
+                    return (false, false);
                 }
             }
             else
             {
-                return false;
+                return (false, false);
             }
                 
             

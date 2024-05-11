@@ -1,16 +1,19 @@
 ﻿using PP0.Models;
 using PP0.StaticClasses;
 using System;
+using System.Collections.Generic;
 
 namespace PP0
 {
     internal class Program
     {
+        internal static List<User> users;
         static void Main(string[] args)
         {
-            var users = OperationsWithJson.DeserilizeJson<User>(@"Files\UsersDb.json");
+            users = OperationsWithJson.DeserilizeJson<User>(@"Files\UsersDb.json");
             
             bool stayInMainMenu = true;
+            bool goToNextScreen = false;
             do
             {
                 LoginUtilities.MainLoginRegisterWindow();
@@ -18,7 +21,8 @@ namespace PP0
 
                 if (key == ConsoleKey.L)
                 {
-                    stayInMainMenu = !LoginUtilities.LoginCredentialsWindow();
+                    (stayInMainMenu, goToNextScreen) = LoginUtilities.LoginCredentialsWindow();
+                    stayInMainMenu = !stayInMainMenu;
                     continue;
                 }
                 else if (key == ConsoleKey.R)
