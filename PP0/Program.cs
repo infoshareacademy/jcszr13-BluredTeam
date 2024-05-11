@@ -1,4 +1,5 @@
-﻿using PP0.StaticClasses;
+﻿using PP0.Models;
+using PP0.StaticClasses;
 using System;
 
 namespace PP0
@@ -7,7 +8,8 @@ namespace PP0
     {
         static void Main(string[] args)
         {
-
+            var users = OperationsWithJson.DeserilizeJson<User>(@"Files\UsersDb.json");
+            
             bool stayInMainMenu = true;
             do
             {
