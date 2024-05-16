@@ -13,7 +13,7 @@ namespace PP0.StaticClasses
         private static readonly JsonSerializerOptions _options = new() { WriteIndented = true };
 
         internal static List<T> DeserilizeJson<T>(string fileName) {
-            Stream streamJson = new FileStream(fileName,FileMode.Open,FileAccess.Read);
+            using Stream streamJson = new FileStream(fileName,FileMode.Open,FileAccess.Read);
             return JsonSerializer.Deserialize<List<T>>(streamJson, _options);
         }
 
