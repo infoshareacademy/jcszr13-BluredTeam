@@ -1,16 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 using PP0.WEB.Models;
+using PP0.WEB.Services;
 using System.Diagnostics;
 
 namespace PP0.WEB.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        ILoginService _loginService;
+        public HomeController( ILoginService loginService)
         {
-            _logger = logger;
+            _loginService = loginService;
         }
 
         public IActionResult Index()

@@ -1,0 +1,32 @@
+[
+  {
+    "Login": "adam.stelmaszuk",
+    "Password": "password123",
+    "Roles": [
+      {
+        "Id": 1,
+        "Name": "Pacjent"
+      }
+    ]
+  },
+  {
+    "Login": "krzysztof.stanio",
+    "Password": "password456",
+    "Roles": [
+      {
+        "Id": 1,
+        "Name": "Pacjent"
+      }
+    ]
+  },
+  {
+    "Login": "joanna.zawadzka",
+    "Password": "password789",
+    "Roles": [
+      {
+        "Id": 1,
+        "Name": "Pacjent"
+      }
+    ]
+  }
+]
