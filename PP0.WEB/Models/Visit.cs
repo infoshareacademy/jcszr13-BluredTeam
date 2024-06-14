@@ -10,6 +10,7 @@ namespace PP0.WEB.Models
 {
     public class Visit
     {
+        public int Id { get; set; }
         public DateTime Date { get; set; }
         public VisitType Type { get; set; }
         public string DoctorName { get; set; }
@@ -19,8 +20,14 @@ namespace PP0.WEB.Models
         public string Referrals { get; set; }
         public string Prescriptions { get; set; }
 
-        public Visit(DateTime date, VisitType type, string doctorName, string patientName, string description, string recomendations, string referrals, string prescriptions)
+        public Visit()
         {
+            
+        }
+
+        public Visit(int id, DateTime date, VisitType type, string doctorName, string patientName, string description, string recomendations, string referrals, string prescriptions)
+        {
+            Id = id;
             Date = date;
             Type = type;
             DoctorName = doctorName;
