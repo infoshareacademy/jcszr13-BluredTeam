@@ -1,14 +1,21 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PP0.WEB.Services;
 
 namespace PP0.WEB.Controllers
 {
     public class UserController : Controller
     {
+        private readonly UserService _userService;
+        public UserController()
+        {
+            _userService = new UserService();
+        }
         // GET: UserController
         public ActionResult Index()
         {
-            return View();
+            var model = _userService.GetAllItems();
+            return View(model);
         }
 
         // GET: UserController/Details/5

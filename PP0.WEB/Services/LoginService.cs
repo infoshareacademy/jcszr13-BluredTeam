@@ -1,4 +1,6 @@
-﻿namespace PP0.WEB.Services
+﻿using PP0.WEB.Interfaces;
+
+namespace PP0.WEB.Services
 {
     public interface ILoginService
     {
