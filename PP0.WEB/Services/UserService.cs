@@ -12,5 +12,11 @@ namespace PP0.WEB.Services
              _users = JsonService.DeserilizeJson<User>(@"Files\UsersDb.json");
             return _users;
         }
+
+        public int GetUserNextId() 
+        {
+            int nextId = _users.Max(u => u.Id);
+            return nextId +1;
+        }
     }
 }
