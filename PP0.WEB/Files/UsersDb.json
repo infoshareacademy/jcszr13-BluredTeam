@@ -1,5 +1,6 @@
 [
   {
+    "Id": 1,
     "Login": "adam.stelmaszuk",
     "Password": "password123",
     "Roles": [
@@ -10,6 +11,7 @@
     ]
   },
   {
+    "Id": 2,
     "Login": "krzysztof.stanio",
     "Password": "password456",
     "Roles": [
@@ -20,6 +22,7 @@
     ]
   },
   {
+    "Id": 3,
     "Login": "joanna.zawadzka",
     "Password": "password789",
     "Roles": [
@@ -28,5 +31,11 @@
         "Name": "Pacjent"
       }
     ]
+  },
+  {
+    "Id": 4,
+    "Login": "john.doe",
+    "Password": "pass123456789",
+    "Roles": null
   }
 ]

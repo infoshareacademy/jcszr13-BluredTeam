@@ -19,7 +19,7 @@ namespace PP0.WEB.Services
 
         internal static void SerializeToJson<T>(List<T> list, string fileName) { 
                 string jsonString = JsonSerializer.Serialize(list, _options);
-                File.AppendAllText(fileName, jsonString);
+                File.WriteAllText(fileName, jsonString);
         }
 
     }

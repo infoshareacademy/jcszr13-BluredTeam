@@ -18,5 +18,12 @@ namespace PP0.WEB.Services
             int nextId = _users.Max(u => u.Id);
             return nextId +1;
         }
+
+        public void Create(User user)
+        {
+            user.Id = GetUserNextId();
+            _users.Add(user);
+            JsonService.SerializeToJson(_users, @"Files\UsersDb.json");
+        }
     }
 }

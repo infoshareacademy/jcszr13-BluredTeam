@@ -1,15 +1,17 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PP0.WEB.Interfaces;
+using PP0.WEB.Models;
 using PP0.WEB.Services;
 
 namespace PP0.WEB.Controllers
 {
     public class UserController : Controller
     {
-        private readonly UserService _userService;
-        public UserController()
+        private readonly IUserService _userService;
+        public UserController(IUserService userService)
         {
-            _userService = new UserService();
+            _userService = userService;
         }
         // GET: UserController
         public ActionResult Index()
@@ -33,10 +35,11 @@ namespace PP0.WEB.Controllers
         // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public ActionResult Create(User model)
         {
             try
             {
+                _userService.Create(model);
                 return RedirectToAction(nameof(Index));
             }
             catch

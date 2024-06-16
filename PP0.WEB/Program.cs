@@ -12,7 +12,7 @@ namespace PP0.WEB
             // Add services to the container.
             builder.Services.AddControllersWithViews();
             builder.Services.AddTransient<ILoginService, LoginService>();
-            builder.Services.AddTransient<IUserService, UserService>();
+            builder.Services.AddSingleton<IUserService, UserService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

@@ -19,6 +19,10 @@ namespace PP0.WEB.Models
             Password = password;
             Roles = roles;
         }
+        public User()
+        {
+            
+        }
     }
 
 }
