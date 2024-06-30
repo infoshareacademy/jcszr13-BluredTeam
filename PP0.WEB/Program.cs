@@ -1,3 +1,6 @@
+using PP0.WEB.Interfaces;
+using PP0.WEB.Services;
+
 namespace PP0.WEB
 {
     public class Program
@@ -8,7 +11,8 @@ namespace PP0.WEB
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-
+            builder.Services.AddTransient<ILoginService, LoginService>();
+            builder.Services.AddSingleton<IUserService, UserService>();
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.

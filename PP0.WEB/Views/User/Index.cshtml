@@ -1,0 +1,52 @@
+﻿@using PP0.WEB.Models;
+@model IEnumerable<User>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Login)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Password)
+            </th>
+            <th>
+                Roles
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Login)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Password)
+            </td>
+            <td>
+                    @foreach (var role in item.Roles)
+                    {
+                        <p>@role.Name</p>
+                    }
+            </td>
+                <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Login }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Login }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Login })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

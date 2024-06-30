@@ -1,0 +1,63 @@
+[
+  {
+    "Id": 1,
+    "Login": "adam.stelmaszuk",
+    "Password": "password123",
+    "Roles": [
+      {
+        "Id": 1,
+        "Name": "Pacjent"
+      }
+    ]
+  },
+  {
+    "Id": 2,
+    "Login": "krzysztof.stanio",
+    "Password": "password456",
+    "Roles": [
+      {
+        "Id": 1,
+        "Name": "Pacjent"
+      }
+    ]
+  },
+  {
+    "Id": 3,
+    "Login": "joanna.zawadzka",
+    "Password": "password789",
+    "Roles": [
+      {
+        "Id": 1,
+        "Name": "Pacjent"
+      }
+    ]
+  },
+  {
+    "Id": 4,
+    "Login": "john.doe",
+    "Password": "pass123456789",
+    "Roles": [
+      {
+        "Id": 2,
+        "Name": "Lekarz"
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "Login": "John.Smith",
+    "Password": "js1234567",
+    "Roles": []
+  },
+  {
+    "Id": 6,
+    "Login": "TestUser",
+    "Password": "test12345",
+    "Roles": [
+      {
+        "Id": 1,
+        "Name": "Pacjent"
+      }
+    ]
+  }
+]
