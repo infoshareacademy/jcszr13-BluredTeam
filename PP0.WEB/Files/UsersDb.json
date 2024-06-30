@@ -36,6 +36,28 @@
     "Id": 4,
     "Login": "john.doe",
     "Password": "pass123456789",
-    "Roles": null
+    "Roles": [
+      {
+        "Id": 2,
+        "Name": "Lekarz"
+      }
+    ]
+  },
+  {
+    "Id": 5,
+    "Login": "John.Smith",
+    "Password": "js1234567",
+    "Roles": []
+  },
+  {
+    "Id": 6,
+    "Login": "TestUser",
+    "Password": "test12345",
+    "Roles": [
+      {
+        "Id": 1,
+        "Name": "Pacjent"
+      }
+    ]
   }
 ]

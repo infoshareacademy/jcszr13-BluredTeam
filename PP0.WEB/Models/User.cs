@@ -17,11 +17,18 @@ namespace PP0.WEB.Models
         {
             Login = login;
             Password = password;
-            Roles = roles;
+            if (roles != null)
+            {
+                Roles = roles;
+            }
+            else { 
+            Roles = new List<Role>();
+            }
+           
         }
         public User()
         {
-            
+            Roles = new List<Role>();
         }
     }
 

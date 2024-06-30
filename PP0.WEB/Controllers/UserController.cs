@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using PP0.WEB.Interfaces;
 using PP0.WEB.Models;
 using PP0.WEB.Services;
+using PP0.WEB.ViewModels;
 
 namespace PP0.WEB.Controllers
 {
@@ -35,11 +37,16 @@ namespace PP0.WEB.Controllers
         // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(User model)
+        public ActionResult Create(UserViewModel vm)
         {
+            var rolesList = new List<SelectListItem>();
+            rolesList.Add(new SelectListItem { Text = "Pacjent", Value = "Pacjent" });
+            rolesList.Add(new SelectListItem { Text = "Lekarz", Value = "Lekarz" });
+            ViewBag.Roles = new SelectList(rolesList, "Value", "Text");
             try
             {
-                _userService.Create(model);
+                User user = new User(vm.Login, vm.Password, new List<Role> { new Role(1, "Pacjent") });
+                _userService.Create(user);
                 return RedirectToAction(nameof(Index));
             }
             catch

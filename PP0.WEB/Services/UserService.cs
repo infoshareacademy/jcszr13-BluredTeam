@@ -21,7 +21,11 @@ namespace PP0.WEB.Services
 
         public void Create(User user)
         {
+            //methoda sprawdzająca czy istnieje juz taki User z loginem i hasłem
+            //wywołanie metody
+
             user.Id = GetUserNextId();
+            
             _users.Add(user);
             JsonService.SerializeToJson(_users, @"Files\UsersDb.json");
         }
