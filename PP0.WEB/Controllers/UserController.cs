@@ -18,6 +18,7 @@ namespace PP0.WEB.Controllers
         // GET: UserController
         public ActionResult Index()
         {
+
             var model = _userService.GetAllItems();
             return View(model);
         }
@@ -31,6 +32,10 @@ namespace PP0.WEB.Controllers
         // GET: UserController/Create
         public ActionResult Create()
         {
+            var rolesList = new List<SelectListItem>();
+            rolesList.Add(new SelectListItem { Text = "Pacjent", Value = "Pacjent" });
+            rolesList.Add(new SelectListItem { Text = "Lekarz", Value = "Lekarz" });
+            ViewBag.Roles = new SelectList(rolesList, "Value", "Text");
             return View();
         }
 
@@ -39,10 +44,7 @@ namespace PP0.WEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(UserViewModel vm)
         {
-            var rolesList = new List<SelectListItem>();
-            rolesList.Add(new SelectListItem { Text = "Pacjent", Value = "Pacjent" });
-            rolesList.Add(new SelectListItem { Text = "Lekarz", Value = "Lekarz" });
-            ViewBag.Roles = new SelectList(rolesList, "Value", "Text");
+
             try
             {
                 User user = new User(vm.Login, vm.Password, new List<Role> { new Role(1, "Pacjent") });

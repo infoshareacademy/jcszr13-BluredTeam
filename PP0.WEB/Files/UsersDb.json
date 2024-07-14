@@ -59,5 +59,27 @@
         "Name": "Pacjent"
       }
     ]
+  },
+  {
+    "Id": 7,
+    "Login": "User9",
+    "Password": "PasswordUser9123",
+    "Roles": [
+      {
+        "Id": 1,
+        "Name": "Pacjent"
+      }
+    ]
+  },
+  {
+    "Id": 8,
+    "Login": "user10",
+    "Password": "user10123",
+    "Roles": [
+      {
+        "Id": 1,
+        "Name": "Pacjent"
+      }
+    ]
   }
 ]
