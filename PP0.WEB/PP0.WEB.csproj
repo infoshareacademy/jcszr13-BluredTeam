@@ -25,4 +25,8 @@
     <Folder Include="NewFolder\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PP0.EntityFrameworkCore.Database\PP0.EntityFrameworkCore.Database.csproj" />
+  </ItemGroup>
+
 </Project>
