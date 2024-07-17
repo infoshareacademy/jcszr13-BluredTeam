@@ -13,10 +13,11 @@ namespace PP0.EntityFrameworkCore.Database.Context
     {
         public DbSet<UserRole> UsersRoles { get; set; }
         public DbSet<User> Users{ get; set; }
+        public DbSet<Visit> Visits { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"Server=localhost;Database=PP0EfCore;Trusted_Connection=True;TrustServerCertificate=True;");
+            optionsBuilder.UseSqlServer(@"Server=ASIK\SQLEXPRESS;Database=PP0EfCore;Trusted_Connection=True;TrustServerCertificate=True;");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,6 +40,22 @@ namespace PP0.EntityFrameworkCore.Database.Context
 
 
             });
-            }
+
+            modelBuilder.Entity<Visit>(entity =>
+            {
+                entity.ToTable("Visits");
+                entity.HasKey(x => x.Id);
+
+                entity.HasOne(x => x.Doctor)
+                .WithMany(x => x.DoctorVisits)
+                .HasForeignKey(x => x.DoctorId)
+                .OnDelete(DeleteBehavior.NoAction);
+
+                entity.HasOne(x => x.Patient)
+                .WithMany(x => x.PatientVisits)
+                .HasForeignKey(x => x.PatientId)
+                .OnDelete(DeleteBehavior.NoAction);
+            });
+        }
     }
 }

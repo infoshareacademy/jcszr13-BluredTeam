@@ -12,6 +12,9 @@ namespace PP0.EntityFrameworkCore.Database.Entities
         public string Login { get; set; }
         public string Password { get; set; }
 
+        public ICollection<Visit> PatientVisits { get; set; }
+        public ICollection<Visit> DoctorVisits { get; set; }
+
     }
 
 }
