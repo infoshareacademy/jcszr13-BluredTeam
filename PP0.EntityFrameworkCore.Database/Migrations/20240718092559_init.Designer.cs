@@ -11,15 +11,15 @@ using PP0.EntityFrameworkCore.Database.Context;
 namespace PP0.EntityFrameworkCore.Database.Migrations
 {
     [DbContext(typeof(PP0DatabaseContext))]
-    [Migration("20240707113409_PP0InitialMigration")]
-    partial class PP0InitialMigration
+    [Migration("20240718092559_init")]
+    partial class init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.6")
+                .HasAnnotation("ProductVersion", "8.0.7")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);

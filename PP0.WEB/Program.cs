@@ -1,7 +1,8 @@
+using Microsoft.EntityFrameworkCore;
 using PP0.EntityFrameworkCore.Database.Context;
 using PP0.WEB.Interfaces;
 using PP0.WEB.Services;
-
+using PP0.EntityFrameworkCore.Database.Extensions;
 namespace PP0.WEB
 {
     public class Program
@@ -12,7 +13,8 @@ namespace PP0.WEB
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddDbContext<PP0DatabaseContext>();
+           
+            builder.Services.AddInfractructure(builder.Configuration);
             builder.Services.AddTransient<ILoginService, LoginService>();
             builder.Services.AddSingleton<IUserService, UserService>();
             var app = builder.Build();

@@ -5,7 +5,7 @@
 namespace PP0.EntityFrameworkCore.Database.Migrations
 {
     /// <inheritdoc />
-    public partial class PP0InitialMigration : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
