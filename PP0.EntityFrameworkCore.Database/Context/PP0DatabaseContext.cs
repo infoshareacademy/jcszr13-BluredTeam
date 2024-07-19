@@ -11,14 +11,18 @@ namespace PP0.EntityFrameworkCore.Database.Context
 {
     public class PP0DatabaseContext : DbContext
     {
-        public DbSet<UserRole> UsersRoles { get; set; }
+		public PP0DatabaseContext(DbContextOptions<PP0DatabaseContext> options) : base(options)
+		{
+
+		}
+		public DbSet<UserRole> UsersRoles { get; set; }
         public DbSet<User> Users{ get; set; }
         public DbSet<Visit> Visits { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Server=ASIK\SQLEXPRESS;Database=PP0EfCore;Trusted_Connection=True;TrustServerCertificate=True;");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(@"Server=ASIK\SQLEXPRESS;Database=PP0EfCore;Trusted_Connection=True;TrustServerCertificate=True;");
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
