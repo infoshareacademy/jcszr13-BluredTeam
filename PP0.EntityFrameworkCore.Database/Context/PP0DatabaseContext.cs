@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PP0.EntityFrameworkCore.Database.Context
 {
-    internal class PP0DatabaseContext : DbContext
+    public class PP0DatabaseContext : DbContext
     {
         public DbSet<UserRole> UsersRoles { get; set; }
         public DbSet<User> Users{ get; set; }
