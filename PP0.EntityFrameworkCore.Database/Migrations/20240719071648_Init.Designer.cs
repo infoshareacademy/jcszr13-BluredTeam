@@ -12,8 +12,8 @@ using PP0.EntityFrameworkCore.Database.Context;
 namespace PP0.EntityFrameworkCore.Database.Migrations
 {
     [DbContext(typeof(PP0DatabaseContext))]
-    [Migration("20240713210009_addVisit")]
-    partial class addVisit
+    [Migration("20240719071648_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
