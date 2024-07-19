@@ -27,8 +27,11 @@ namespace PP0.EntityFrameworkCore.Database.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Users
-            modelBuilder.Entity<User>().ToTable("Users");
+			//Identity base
+			base.OnModelCreating(modelBuilder);
+
+			//Users
+			modelBuilder.Entity<User>().ToTable("Users");
             modelBuilder.Entity<User>().HasKey(x => x.Id);
             modelBuilder.Entity<User>().Property(x => x.Id).IsRequired();
             modelBuilder.Entity<User>().Property(x => x.Login).HasMaxLength(400);
