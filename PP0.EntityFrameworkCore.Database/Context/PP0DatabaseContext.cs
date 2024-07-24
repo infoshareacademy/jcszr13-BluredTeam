@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using PP0.EntityFrameworkCore.Database.Entities;
 using PP0.EntityFrameworkCore.Database.Entities.Enums;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace PP0.EntityFrameworkCore.Database.Context
 {
-    public class PP0DatabaseContext : IdentityDbContext
+    public class PP0DatabaseContext : IdentityDbContext<IdentityUser>
     {
 		public PP0DatabaseContext(DbContextOptions<PP0DatabaseContext> options) : base(options)
 		{

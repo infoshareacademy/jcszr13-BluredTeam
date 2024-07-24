@@ -2,6 +2,8 @@
 @inject IHttpContextAccessor HttpContextAccessor
 
 @{
+    var action = ViewContext.RouteData.Values["Action"]?.ToString();
+    var controler = ViewContext.RouteData.Values["Controller"]?.ToString();
     // Pobierz adres URL hosta
     var host = $"{HttpContextAccessor.HttpContext.Request.Scheme}://{HttpContextAccessor.HttpContext.Request.Host}";
 }
