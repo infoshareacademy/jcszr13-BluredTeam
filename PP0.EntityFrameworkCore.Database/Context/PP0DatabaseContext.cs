@@ -20,7 +20,7 @@ namespace PP0.EntityFrameworkCore.Database.Context
 		public DbSet<UserRole> UsersRoles { get; set; }
         public DbSet<User> Users{ get; set; }
         public DbSet<Visit> Visits { get; set; }
-
+        public DbSet<AppUser> AppUsers { get; set; }
         //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         //{
         //    optionsBuilder.UseSqlServer(@"Server=ASIK\SQLEXPRESS;Database=PP0EfCore;Trusted_Connection=True;TrustServerCertificate=True;");
