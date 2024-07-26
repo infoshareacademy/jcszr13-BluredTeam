@@ -1,5 +1,8 @@
 using PP0.WEB.Interfaces;
 using PP0.WEB.Services;
+using PP0.EntityFrameworkCore.Database.Context;
+using Microsoft.EntityFrameworkCore;
+using PP0.EntityFrameworkCore.Database.Extensions;
 
 namespace PP0.WEB
 {
@@ -11,7 +14,10 @@ namespace PP0.WEB
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
-            builder.Services.AddHttpContextAccessor(); // Dodaj tê liniê
+
+			builder.Services.AddInfractructure(builder.Configuration);
+
+			builder.Services.AddHttpContextAccessor(); // Dodaj tê liniê
             builder.Services.AddTransient<ILoginService, LoginService>();
             builder.Services.AddSingleton<IUserService, UserService>();
             var app = builder.Build();
@@ -34,6 +40,8 @@ namespace PP0.WEB
             app.MapControllerRoute(
                 name: "default",
                 pattern: "{controller=Home}/{action=Index}/{id?}");
+
+            app.MapRazorPages();
 
             app.Run();
         }

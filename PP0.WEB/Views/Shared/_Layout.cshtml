@@ -2,6 +2,8 @@
 @inject IHttpContextAccessor HttpContextAccessor
 
 @{
+    var action = ViewContext.RouteData.Values["Action"]?.ToString();
+    var controler = ViewContext.RouteData.Values["Controller"]?.ToString();
     // Pobierz adres URL hosta
     var host = $"{HttpContextAccessor.HttpContext.Request.Scheme}://{HttpContextAccessor.HttpContext.Request.Host}";
 }
@@ -30,6 +32,7 @@
                 <li class="nav-item"><a asp-controller="Visit" asp-action="Index" class="nav-link">Wizyty</a></li>
                 <li class="nav-item"><a asp-controller="User" asp-action="Index" class="nav-link">Użytkownicy</a></li>
             </ul>
+            <partial name="_LoginPartial" />
         </header>
     </div>
     <div class="container">

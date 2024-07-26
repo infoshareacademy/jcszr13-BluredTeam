@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PP0.EntityFrameworkCore.Database.Entities;
 using PP0.EntityFrameworkCore.Database.Entities.Enums;
 using System;
@@ -9,21 +11,28 @@ using System.Threading.Tasks;
 
 namespace PP0.EntityFrameworkCore.Database.Context
 {
-    internal class PP0DatabaseContext : DbContext
+    public class PP0DatabaseContext : IdentityDbContext<IdentityUser>
     {
-        public DbSet<UserRole> UsersRoles { get; set; }
+		public PP0DatabaseContext(DbContextOptions<PP0DatabaseContext> options) : base(options)
+		{
+
+		}
+		public DbSet<UserRole> UsersRoles { get; set; }
         public DbSet<User> Users{ get; set; }
         public DbSet<Visit> Visits { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Server=ASIK\SQLEXPRESS;Database=PP0EfCore;Trusted_Connection=True;TrustServerCertificate=True;");
-        }
+        public DbSet<AppUser> AppUsers { get; set; }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(@"Server=ASIK\SQLEXPRESS;Database=PP0EfCore;Trusted_Connection=True;TrustServerCertificate=True;");
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //Users
-            modelBuilder.Entity<User>().ToTable("Users");
+			//Identity base
+			base.OnModelCreating(modelBuilder);
+
+			//Users
+			modelBuilder.Entity<User>().ToTable("Users");
             modelBuilder.Entity<User>().HasKey(x => x.Id);
             modelBuilder.Entity<User>().Property(x => x.Id).IsRequired();
             modelBuilder.Entity<User>().Property(x => x.Login).HasMaxLength(400);
