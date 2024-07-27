@@ -34,7 +34,19 @@
                 @if (SignInManager.IsSignedIn(User))
                 {
                     <li class="nav-item"><a asp-controller="Visit" asp-action="Index" class="nav-link">Wizyty</a></li>
-                    <li class="nav-item"><a asp-controller="User" asp-action="Index" class="nav-link">Użytkownicy</a></li>                    
+                    <li class="nav-item"><a asp-controller="User" asp-action="Index" class="nav-link">Użytkownicy</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            @User.Identity!.Name!
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" asp-action="Logout" asp-controller="Account">
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 }
                 else
                 {
@@ -42,7 +54,6 @@
                     <li class="nav-item"><a asp-controller="Account" asp-action="Register" class="nav-link">Rejestracja</a></li>                    
                 }
             </ul>
-            <partial name="_LoginPartial" />
         </header>
     </div>
     <div class="container">
