@@ -1,4 +1,9 @@
-﻿@{
+﻿@using Microsoft.AspNetCore.Identity
+@using PP0.EntityFrameworkCore.Database.Entities
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
@@ -10,10 +15,13 @@
         <div class="col-lg-6">
             <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Witamy w Portalu Pacjenta PP0</h1>
             <p class="lead">Portal Pacjenta PP0 umożliwia umawianie wizyt online, przeglądanie historii wizyt, otrzymywanie przypomnień oraz dostęp do wyników badań i recept, co ułatwia zarządzanie zdrowiem i kontakt z lekarzem.</p>
-            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">Zaloguj</button>
-                <button type="button" class="btn btn-outline-secondary btn-lg px-4">Utwórz konto</button>
-            </div>
+            @if (!SignInManager.IsSignedIn(User))
+            {
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-lg px-4 me-md-2">Zaloguj</a>
+                    <a asp-controller="Account" asp-action="Register" class="btn btn-outline-secondary btn-lg px-4">Utwórz konto</a>
+                </div>
+            }            
         </div>
     </div>
 </div>
