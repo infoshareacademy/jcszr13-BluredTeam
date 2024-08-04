@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PP0.EntityFrameworkCore.Database.Context;
+using PP0.EntityFrameworkCore.Database.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace PP0.EntityFrameworkCore.Database.Extensions
 		{
 			services.AddDbContext<PP0DatabaseContext>(options => options.UseSqlServer(
 				configuration.GetConnectionString("PP0local")));
-			services.AddDefaultIdentity<IdentityUser>()
+			services.AddDefaultIdentity<User>()
 				.AddEntityFrameworkStores<PP0DatabaseContext>();
 		}
 	}
