@@ -13,8 +13,8 @@ namespace PP0.EntityFrameworkCore.Database.Entities
         public int Id { get; set; }
         public DateTime Date { get; set; }
         public VisitType Type { get; set; }
-        public int DoctorId { get; set; }
-        public int PatientId { get; set; }
+        public string DoctorId { get; set; }
+        public string PatientId { get; set; }
         public string Description { get; set; }
         public string Recomendations { get; set; }
         public string Referrals { get; set; }

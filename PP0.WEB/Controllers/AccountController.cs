@@ -45,7 +45,7 @@ namespace PP0.WEB.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
-                AppUser user = new()
+                User user = new()
                 {
                     Name = model.Name,
                     UserName = model.Email,
