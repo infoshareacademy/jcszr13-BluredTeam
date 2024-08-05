@@ -18,7 +18,7 @@ namespace PP0.EntityFrameworkCore.Database.Extensions
 		{
 			services.AddDbContext<PP0DatabaseContext>(options => options.UseSqlServer(
 				configuration.GetConnectionString("PP0local")));
-			services.AddDefaultIdentity<User>()
+			services.AddDefaultIdentity<IdentityUser>()
 				.AddEntityFrameworkStores<PP0DatabaseContext>();
 		}
 	}
