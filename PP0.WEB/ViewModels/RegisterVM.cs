@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using PP0.EntityFrameworkCore.Database.Entities.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace PP0.WEB.ViewModels
 {
@@ -20,5 +21,7 @@ namespace PP0.WEB.ViewModels
 
         [DataType(DataType.MultilineText)]
         public string? Address { get; set; }
+
+        public RoleType UserRole { get; set; } = RoleType.Patient;
     }
 }

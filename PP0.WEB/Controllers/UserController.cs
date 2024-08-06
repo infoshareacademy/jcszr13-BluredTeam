@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PP0.WEB.Interfaces;
@@ -16,6 +17,7 @@ namespace PP0.WEB.Controllers
             _userService = userService;
         }
         // GET: UserController
+        [Authorize(Roles = "Admin,Doctor")]
         public ActionResult Index()
         {
 

@@ -3,12 +3,13 @@ using PP0.WEB.Services;
 using PP0.EntityFrameworkCore.Database.Context;
 using Microsoft.EntityFrameworkCore;
 using PP0.EntityFrameworkCore.Database.Extensions;
+using PP0.EntityFrameworkCore.Database.Seeders;
 
 namespace PP0.WEB
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,10 @@ namespace PP0.WEB
             builder.Services.AddTransient<ILoginService, LoginService>();
             builder.Services.AddSingleton<IUserService, UserService>();
             var app = builder.Build();
+
+            var scope = app.Services.CreateScope();
+            var seeder = scope.ServiceProvider.GetRequiredService<UserRoleSeeder>();
+            await seeder.Seed();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

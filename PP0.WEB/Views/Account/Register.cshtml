@@ -30,10 +30,15 @@
                 <input asp-for="ConfirmPassword" class="form-control" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
+            @*User Role*@
             <div class="mb-1">
-                <label asp-for="Address" class="control-label"></label>
-                <textarea asp-for="Address" class="form-control" rows="2"></textarea>
-                <span asp-validation-for="Address" class="text-danger"></span>
+                <label asp-for="UserRole" class="control-label">User Role: </label>
+                <input type="radio" id="Patient" asp-for="UserRole" value="Patient" checked />
+                <label for="User">patient</label>
+                
+                <input type="radio" id="Doctor" asp-for="UserRole" value="Doctor" />
+                <label for="User">doctor</label>
+               
             </div>
             <div class="row">
                 <div class="col-8">
