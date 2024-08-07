@@ -58,7 +58,13 @@ namespace PP0.WEB.Controllers
 
                 if (result.Succeeded)
                 {
-                    await userManager.AddToRoleAsync(user, model.UserRole.ToString());
+                    //await userManager.AddToRoleAsync(user, model.UserRole.ToString());
+                    model.UpdateUserRoles();
+                    foreach (var role in model.UserRoles)
+                    {
+                        await userManager.AddToRoleAsync(user, role);
+
+                    }
                     await signInManager.SignInAsync(user, false);
 
                     return RedirectToLocal(returnUrl);
