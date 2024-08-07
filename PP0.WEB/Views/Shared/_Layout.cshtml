@@ -2,8 +2,25 @@
 @inject IHttpContextAccessor HttpContextAccessor
 @using Microsoft.AspNetCore.Identity
 @using PP0.EntityFrameworkCore.Database.Entities
+@using System.Security.Claims
+
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+
+@functions {
+    public async Task<string> GetUserRole(ClaimsPrincipal user)
+    {
+        var userObj = await UserManager.GetUserAsync(user);
+        var roles = await UserManager.GetRolesAsync(userObj);
+        if (userObj == null)
+        {
+            return string.Empty; 
+        }
+        //return roles.FirstOrDefault() ?? string.Empty;
+        return string.Join("|", roles);
+    }
+}
 
 @{
     var action = ViewContext.RouteData.Values["Action"]?.ToString();
@@ -37,7 +54,8 @@
                     <li class="nav-item"><a asp-controller="User" asp-action="Index" class="nav-link">Użytkownicy</a></li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            @User.Identity!.Name!
+                            @User.Identity!.Name|
+                            <span class="role-display">@await GetUserRole(User)</span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <li>

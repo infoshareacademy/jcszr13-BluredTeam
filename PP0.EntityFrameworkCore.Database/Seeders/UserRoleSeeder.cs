@@ -40,6 +40,14 @@ namespace PP0.EntityFrameworkCore.Database.Seeders
                 {
                     IdentityRole role = new IdentityRole() { Name = RoleType.Admin.ToString() };
                     await _roleManager.CreateAsync(role);
+
+                    var aUser = new IdentityUser() { UserName = "Admin", Email = "admin@admi.com" };
+                    var aUserPWD = "1qaz@WSX";
+                    var chkuser = await _userManager.CreateAsync(aUser, aUserPWD);
+                    if (chkuser.Succeeded)
+                    {
+                       await _userManager.AddToRoleAsync(aUser, "Admin");
+                    }
                 }
             }
         }
