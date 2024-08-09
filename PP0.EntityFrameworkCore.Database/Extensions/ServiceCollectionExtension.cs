@@ -18,7 +18,7 @@ namespace PP0.EntityFrameworkCore.Database.Extensions
 		public static void AddInfractructure(this IServiceCollection services, IConfiguration configuration)
 		{
 			services.AddDbContext<PP0DatabaseContext>(options => options.UseSqlServer(
-				configuration.GetConnectionString("PP0local")));
+				configuration.GetConnectionString("PP0localex")));
 			services.AddDefaultIdentity<IdentityUser>()
 				.AddRoles<IdentityRole>()
 				.AddEntityFrameworkStores<PP0DatabaseContext>();

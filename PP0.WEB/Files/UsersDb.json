@@ -6,7 +6,7 @@
     "Roles": [
       {
         "Id": 1,
-        "Name": "Pacjent"
+        "Name": "Patient"
       }
     ]
   },
@@ -17,7 +17,7 @@
     "Roles": [
       {
         "Id": 1,
-        "Name": "Pacjent"
+        "Name": "Patient"
       }
     ]
   },
@@ -28,7 +28,7 @@
     "Roles": [
       {
         "Id": 1,
-        "Name": "Pacjent"
+        "Name": "Patient"
       }
     ]
   },
@@ -39,7 +39,7 @@
     "Roles": [
       {
         "Id": 2,
-        "Name": "Lekarz"
+        "Name": "Doctor"
       }
     ]
   },
@@ -56,7 +56,7 @@
     "Roles": [
       {
         "Id": 1,
-        "Name": "Pacjent"
+        "Name": "Patient"
       }
     ]
   },
@@ -67,7 +67,7 @@
     "Roles": [
       {
         "Id": 1,
-        "Name": "Pacjent"
+        "Name": "Patient"
       }
     ]
   },
@@ -78,7 +78,7 @@
     "Roles": [
       {
         "Id": 1,
-        "Name": "Pacjent"
+        "Name": "Patient"
       }
     ]
   }

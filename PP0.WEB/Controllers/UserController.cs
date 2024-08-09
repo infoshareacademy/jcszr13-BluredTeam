@@ -35,9 +35,9 @@ namespace PP0.WEB.Controllers
         public ActionResult Create()
         {
             var rolesList = new List<SelectListItem>();
-            rolesList.Add(new SelectListItem { Text = "Pacjent", Value = "Pacjent" });
-            rolesList.Add(new SelectListItem { Text = "Lekarz", Value = "Lekarz" });
-            ViewBag.Roles = new SelectList(rolesList, "Value", "Text");
+            rolesList.Add(new SelectListItem { Text = "Patient", Value = "Patient" });
+            rolesList.Add(new SelectListItem { Text = "Doctor", Value = "Doctor" });
+            ViewBag.Roles = new SelectList(rolesList, "Value", "Text"); 
             return View();
         }
 
@@ -49,7 +49,7 @@ namespace PP0.WEB.Controllers
 
             try
             {
-                User user = new User(vm.Login, vm.Password, new List<Role> { new Role(1, "Pacjent") });
+                User user = new User(vm.Login, vm.Password, new List<Role> { new Role(1, "Patient") });
                 _userService.Create(user);
                 return RedirectToAction(nameof(Index));
             }

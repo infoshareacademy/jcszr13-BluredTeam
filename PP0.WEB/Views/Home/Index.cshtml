@@ -13,13 +13,13 @@
             <img src="https://us.123rf.com/450wm/yupiramos/yupiramos1803/yupiramos180323675/97722724-zesp%C3%B3%C5%82-ludzi-opakowania-medyczne-pigu%C5%82ki-banda%C5%BC-i-butelki-medycyna-ilustracji-wektorowych.jpg?ver=6" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes" width="700" height="500" loading="lazy">
         </div>
         <div class="col-lg-6">
-            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Witamy w Portalu Pacjenta PP0</h1>
-            <p class="lead">Portal Pacjenta PP0 umożliwia umawianie wizyt online, przeglądanie historii wizyt, otrzymywanie przypomnień oraz dostęp do wyników badań i recept, co ułatwia zarządzanie zdrowiem i kontakt z lekarzem.</p>
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">Welcome to the PP0 Patient Portal</h1>
+            <p class="lead">The PP0 Patient Portal allows you to make appointments online, view your appointment history, receive reminders, and access test results and prescriptions, making it easier to manage your health and contact your doctor.</p>
             @if (!SignInManager.IsSignedIn(User))
             {
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-lg px-4 me-md-2">Zaloguj</a>
-                    <a asp-controller="Account" asp-action="Register" class="btn btn-outline-secondary btn-lg px-4">Utwórz konto</a>
+                    <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-lg px-4 me-md-2">Login</a>
+                    <a asp-controller="Account" asp-action="Register" class="btn btn-outline-secondary btn-lg px-4">Register</a>
                 </div>
             }            
         </div>
