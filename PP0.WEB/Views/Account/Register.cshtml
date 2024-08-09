@@ -8,7 +8,7 @@
 <div class="row d-flex align-items-center justify-content-center">
     <div class="col-md-4 card p-3">
         <h2 class="text-center text-info">Register</h2>
-        <form asp-action="Register" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
+        <form id="formId" asp-action="Register" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="mb-1">
                 <label asp-for="Name" class="control-label"></label>
@@ -30,10 +30,14 @@
                 <input asp-for="ConfirmPassword" class="form-control" />
                 <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
             </div>
+            @*User Role*@
             <div class="mb-1">
-                <label asp-for="Address" class="control-label"></label>
-                <textarea asp-for="Address" class="form-control" rows="2"></textarea>
-                <span asp-validation-for="Address" class="text-danger"></span>
+                <label asp-for="IsPatient" class="control-label">Patient: </label>
+                <input type="checkbox" id="Patient" asp-for="IsPatient" checked/>
+
+                <label asp-for="IsDoctor" class="control-label">Doctor: </label>
+                <input type="checkbox" id="Doctor" asp-for="IsDoctor" />
+               
             </div>
             <div class="row">
                 <div class="col-8">
@@ -52,4 +56,21 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var form = document.getElementById('formId'); 
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    var isPatientChecked = document.getElementById('Patient').checked;
+                    var isDoctorChecked = document.getElementById('Doctor').checked;
+                    
+
+                    if (!isPatientChecked && !isDoctorChecked ) {
+                        e.preventDefault();
+                        alert('Please select at least one role.');
+                    }
+                });
+            }
+        });
+    </script>
 }

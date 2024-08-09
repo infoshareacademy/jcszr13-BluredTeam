@@ -6,7 +6,7 @@ using PP0.WEB.ViewModels;
 
 namespace PP0.WEB.Controllers
 {
-    public class AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager) : Controller
+    public class AccountController(SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager) : Controller
     {
         public IActionResult Login(string? returnUrl = null)
         {
@@ -45,18 +45,26 @@ namespace PP0.WEB.Controllers
             ViewData["ReturnUrl"] = returnUrl;
             if (ModelState.IsValid)
             {
+                
                 User user = new()
                 {
                     Name = model.Name,
                     UserName = model.Email,
                     Email = model.Email,
-                    Address = model.Address
+                    //Address = model.Address
                 };
 
                 var result = await userManager.CreateAsync(user, model.Password!);
 
                 if (result.Succeeded)
                 {
+                    //await userManager.AddToRoleAsync(user, model.UserRole.ToString());
+                    model.UpdateUserRoles();
+                    foreach (var role in model.UserRoles)
+                    {
+                        await userManager.AddToRoleAsync(user, role);
+
+                    }
                     await signInManager.SignInAsync(user, false);
 
                     return RedirectToLocal(returnUrl);

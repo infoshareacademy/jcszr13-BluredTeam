@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace PP0.EntityFrameworkCore.Database.Context
 {
-    public class PP0DatabaseContext : IdentityDbContext<User>
+    public class PP0DatabaseContext : IdentityDbContext<IdentityUser>
     {
 		public PP0DatabaseContext(DbContextOptions<PP0DatabaseContext> options) : base(options)
 		{

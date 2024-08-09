@@ -8,9 +8,10 @@ namespace PP0.EntityFrameworkCore.Database.Entities.Enums
 {
     public enum RoleType
     {
-        Guest,
+       
         Patient,
         Doctor,
         Admin
+        
     }
 }
