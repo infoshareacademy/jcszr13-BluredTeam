@@ -20,6 +20,7 @@ namespace PP0.WEB
 
 			builder.Services.AddHttpContextAccessor(); // Dodaj tê liniê
             builder.Services.AddTransient<ILoginService, LoginService>();
+            builder.Services.AddTransient<IUserServiceDb, UserServiceDb>();
             builder.Services.AddSingleton<IUserService, UserService>();
             var app = builder.Build();
 
