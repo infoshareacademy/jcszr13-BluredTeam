@@ -12,16 +12,18 @@ namespace PP0.WEB.Controllers
     public class UserController : Controller
     {
         private readonly IUserService _userService;
-        public UserController(IUserService userService)
+        private readonly IUserServiceDb _userServiceDb;
+        public UserController(IUserService userService, IUserServiceDb userServiceDb)
         {
             _userService = userService;
+            _userServiceDb = userServiceDb;
         }
         // GET: UserController
-        [Authorize(Roles = "Admin,Doctor")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
 
-            var model = _userService.GetAllItems();
+            var model = _userServiceDb.GetAllUsers();
             return View(model);
         }
 
