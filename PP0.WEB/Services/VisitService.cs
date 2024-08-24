@@ -1,4 +1,5 @@
-﻿using PP0.WEB.Models;
+﻿using PP0.EntityFrameworkCore.Database.Entities.Enums;
+using PP0.WEB.Models;
 using PP0.WEB.Models.Enums;
 
 namespace PP0.WEB.Services
