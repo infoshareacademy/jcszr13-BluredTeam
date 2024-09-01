@@ -4,6 +4,7 @@ using PP0.EntityFrameworkCore.Database.Context;
 using Microsoft.EntityFrameworkCore;
 using PP0.EntityFrameworkCore.Database.Extensions;
 using PP0.EntityFrameworkCore.Database.Seeders;
+using PP0.API.NFZ.ServiceWorkers;
 
 namespace PP0.WEB
 {
@@ -22,6 +23,7 @@ namespace PP0.WEB
             builder.Services.AddTransient<ILoginService, LoginService>();
             builder.Services.AddTransient<IUserServiceDb, UserServiceDb>();
             builder.Services.AddSingleton<IUserService, UserService>();
+            builder.Services.AddHostedService<TestWorker>();
             var app = builder.Build();
 
             var scope = app.Services.CreateScope();

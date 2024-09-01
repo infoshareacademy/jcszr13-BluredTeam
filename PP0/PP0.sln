@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PP0", "PP0.csproj", "{78D64
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PP0.WEB", "..\PP0.WEB\PP0.WEB.csproj", "{B2C841C9-4E8F-4FD4-AF55-2AAC1A9B7AE2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PP0.EntityFrameworkCore.Database", "..\PP0.EntityFrameworkCore.Database\PP0.EntityFrameworkCore.Database.csproj", "{872AEF2C-AA24-41C4-8BFF-66E061603B5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PP0.EntityFrameworkCore.Database", "..\PP0.EntityFrameworkCore.Database\PP0.EntityFrameworkCore.Database.csproj", "{872AEF2C-AA24-41C4-8BFF-66E061603B5D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PP0.API.NFZ", "..\PP0.API.NFZ\PP0.API.NFZ.csproj", "{9010EF1D-CEC2-4F5F-B98A-89E6A8EDFEF3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{872AEF2C-AA24-41C4-8BFF-66E061603B5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{872AEF2C-AA24-41C4-8BFF-66E061603B5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{872AEF2C-AA24-41C4-8BFF-66E061603B5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9010EF1D-CEC2-4F5F-B98A-89E6A8EDFEF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9010EF1D-CEC2-4F5F-B98A-89E6A8EDFEF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9010EF1D-CEC2-4F5F-B98A-89E6A8EDFEF3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9010EF1D-CEC2-4F5F-B98A-89E6A8EDFEF3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

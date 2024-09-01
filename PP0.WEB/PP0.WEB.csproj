@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PP0.API.NFZ\PP0.API.NFZ.csproj" />
     <ProjectReference Include="..\PP0.EntityFrameworkCore.Database\PP0.EntityFrameworkCore.Database.csproj" />
   </ItemGroup>
 
