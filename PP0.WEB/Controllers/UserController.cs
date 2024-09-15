@@ -1,22 +1,34 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PP0.WEB.Interfaces;
-using PP0.WEB.Models;
 using PP0.WEB.Services;
 using PP0.WEB.ViewModels;
+using PP0.EntityFrameworkCore.Database.Entities;
 
 namespace PP0.WEB.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IUserService _userService;
+        
         private readonly IUserServiceDb _userServiceDb;
-        public UserController(IUserService userService, IUserServiceDb userServiceDb)
+        private readonly SignInManager<IdentityUser> _signInManager;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
+
+        public UserController( IUserServiceDb userServiceDb,
+            SignInManager<IdentityUser> signInManager,
+            UserManager<IdentityUser> userManager,
+            RoleManager<IdentityRole> roleManager
+            )
         {
-            _userService = userService;
+           
             _userServiceDb = userServiceDb;
+            _signInManager = signInManager;
+            _userManager = userManager;
+            _roleManager = roleManager;
         }
         // GET: UserController
         [Authorize(Roles = "Admin")]
@@ -36,29 +48,18 @@ namespace PP0.WEB.Controllers
         // GET: UserController/Create
         public ActionResult Create()
         {
-            var rolesList = new List<SelectListItem>();
-            rolesList.Add(new SelectListItem { Text = "Pacjent", Value = "Pacjent" });
-            rolesList.Add(new SelectListItem { Text = "Lekarz", Value = "Lekarz" });
-            ViewBag.Roles = new SelectList(rolesList, "Value", "Text");
+
             return View();
         }
 
         // POST: UserController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(UserViewModel vm)
+        public async Task<IActionResult> Create(RegisterVM model, string? returnUrl = null)
         {
 
-            try
-            {
-                User user = new User(vm.Login, vm.Password, new List<Role> { new Role(1, "Pacjent") });
-                _userService.Create(user);
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return View(model);
+
         }
 
         // GET: UserController/Edit/5
@@ -72,19 +73,15 @@ namespace PP0.WEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
+   
                 return View();
-            }
+           
         }
 
         // GET: UserController/Delete/5
         public ActionResult Delete(int id)
         {
+
             return View();
         }
 
@@ -93,14 +90,11 @@ namespace PP0.WEB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id, IFormCollection collection)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
+
                 return View();
-            }
+          
         }
+
+
     }
 }

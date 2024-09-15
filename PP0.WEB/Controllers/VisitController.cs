@@ -1,24 +1,40 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PP0.WEB.Interfaces;
 using PP0.WEB.Models;
 using PP0.WEB.Services;
+using PP0.WEB.ViewModels;
 
 namespace PP0.WEB.Controllers
 {
     public class VisitController : Controller
     {
-        private readonly VisitService _visitService;
-
-        public VisitController()
+        private IVisitServiceDb _visitServiceDb;
+        public VisitController(IVisitServiceDb visitServiceDb)
         {
+            _visitServiceDb = visitServiceDb;
             _visitService = new VisitService();
         }
+
+        private readonly VisitService _visitService;
+
+        //public VisitController()
+        //{
+        //    _visitService = new VisitService();
+        //}
            
         // GET: VisitController
         public ActionResult Index()
         {
-            var model = _visitService.GetAll();
-            return View(model);
+            var VMmodel = _visitServiceDb.GetAllVisits().Select(x => new VisitVM() 
+                { 
+                Id = x.Id,
+                Date = x.Date,
+                Type = x.Type.ToString(),
+                DoctorName = x.Doctor?.Name,
+                PatientName = x.Patient?.Name
+                });
+            return View(VMmodel);
         }
 
         // GET: VisitController/Details/5
