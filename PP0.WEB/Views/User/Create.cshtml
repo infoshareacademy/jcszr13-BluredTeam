@@ -1,40 +1,55 @@
-﻿@model PP0.WEB.ViewModels.UserViewModel
+﻿﻿@using PP0.WEB.ViewModels;
+@model RegisterVM
 
 
 @{
     ViewData["Title"] = "Create";
 }
 
-<h1>Adding a new user</h1>
-
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
+<div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-4 card p-3">
+        <h2 class="text-center text-info">Register</h2>
+        <form id="formId" asp-action="Register" method="post" asp-route-returnurl="@ViewData["ReturnUrl"]">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <div class="form-group">
-                <label asp-for="Login" class="control-label"></label>
-                <input asp-for="Login" class="form-control" />
-                <span asp-validation-for="Login" class="text-danger"></span>
+            <div class="mb-1">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="mb-1">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-1">
                 <label asp-for="Password" class="control-label"></label>
                 <input asp-for="Password" class="form-control" />
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
+            <div class="mb-1">
+                <label asp-for="ConfirmPassword" class="control-label"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+            @*User Role*@
+            <div class="mb-1">
+                <label asp-for="IsPatient" class="control-label">Patient: </label>
+                <input type="checkbox" id="Patient" asp-for="IsPatient" checked />
 
-            @Html.DropDownListFor(model => Model.Role, ViewBag.Roles as SelectList, "select role", new { @class = "form-control" })
-            
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <label asp-for="IsDoctor" class="control-label">Doctor: </label>
+                <input type="checkbox" id="Doctor" asp-for="IsDoctor" />
+
+            </div>
+            <div class="row">
+                <div class="col-8">
+                    <a asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" class="text-decoration-none float-start mt-2">Have account?</a>
+                </div>
+                <div class="col-4">
+                    <input type="submit" value="Register" class="btn btn-primary btn-sm float-end" />
+                </div>
             </div>
         </form>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
