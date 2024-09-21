@@ -47,7 +47,8 @@ namespace PP0.WEB.Controllers
             var model = new AddVisit()
             {
                 Doctors = doctors,
-                Patients = patients
+                Patients = patients,
+                Date = DateTime.Now.Date
             };
             return View(model);
         }
@@ -60,6 +61,8 @@ namespace PP0.WEB.Controllers
         {
             try
             {
+                ModelState.Remove("Doctors");
+                ModelState.Remove("Patients");
                 if (!ModelState.IsValid)
                 {
                     return View(model);
@@ -125,6 +128,9 @@ namespace PP0.WEB.Controllers
         {
             try
             {
+                ModelState.Remove("Doctors");
+                ModelState.Remove("Patients");
+
                 if (!ModelState.IsValid)
                 {
                     return View(model);

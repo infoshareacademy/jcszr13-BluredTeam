@@ -13,11 +13,7 @@ namespace PP0.WEB.Models
 
         [Required]
         public VisitType Type { get; set; }
-
-        [Required]
         public string DoctorId { get; set; }
-
-        [Required]
         public string PatientId { get; set; }
 
         [Required]

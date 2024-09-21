@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Wizyty</h1>
+<h1>Visits</h1>
 
 <p>
-    <a asp-action="Create">Utwórz nową wizytę</a>
+    <a class="btn btn-success" asp-action="Create">Create new visit</a>
 </p>
 <table class="table">
     <thead>
@@ -49,9 +49,10 @@
                 @Html.DisplayFor(modelItem => item.Patient.Name)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new {  id=item.Id }) |
-                @Html.ActionLink("Details", "Details", new {  id=item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                   
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-outline-primary" }) 
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-outline-info" }) 
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-outline-danger" })
             </td>
         </tr>
 }

@@ -1,49 +1,110 @@
 ﻿@using PP0.EntityFrameworkCore.Database.Entities.Enums
 @model PP0.WEB.Models.AddVisit
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@using Microsoft.AspNetCore.Identity
+@using PP0.EntityFrameworkCore.Database.Entities
+@using System.Security.Claims
 
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject RoleManager<IdentityRole> RoleManager
+
+@functions {
+    public async Task<string> GetUserRole(ClaimsPrincipal user)
+    {
+        var userObj = await UserManager.GetUserAsync(user);
+        var roles = await UserManager.GetRolesAsync(userObj);
+        if (userObj == null)
+        {
+            return string.Empty;
+        }
+        //return roles.FirstOrDefault() ?? string.Empty;
+        return string.Join("|", roles);
+    }
+    public async Task<string> GetUserId(ClaimsPrincipal user)
+    {
+        var userObj = await UserManager.GetUserAsync(user);
+        return userObj.Id;
+    }
+}
 @{
     ViewData["Title"] = "Create";
 }
+<div>
+    <a class="btn btn-outline-dark" asp-action="Index">Back to List</a>
+</div>
+<h1>Create Visit</h1>
 
-<h1>Create</h1>
-
-<h4>Visit</h4>
 <hr />
 <div class="row">
-    <div class="col-md-4">
+    <div class="col-md-10">
         <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>       
-            <div class="form-group">
-                <label asp-for="Date" class="control-label"></label>
-                <input asp-for="Date" class="form-control" />
-                <span asp-validation-for="Date" class="text-danger"></span>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Date" class="control-label"></label>
+                        <input asp-for="Date" class="form-control" type="datetime-local" step="60" />
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Type" class="control-label"></label>
+                        <select asp-for="Type" class="form-control" asp-items="@Html.GetEnumSelectList<VisitType>()"></select>
+                    </div>
+                </div>
+                <div class="col">
+                    @if ((await GetUserRole(User)).Contains("Patient"))
+                    {
+                        <div class="form-group">
+                            <input type="hidden" asp-for="Doctors" />
+                            <label asp-for="DoctorId" class="control-label"></label>
+                            <select asp-for="DoctorId" class="form-control" asp-items="@Model.Doctors"></select>
+                            <span asp-validation-for="DoctorId" class="text-danger"></span>
+                        </div>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="DoctorId" value="@(await GetUserId(User))" />
+                    }
+                    @if ((await GetUserRole(User)).Contains("Doctor"))
+                    {
+                        <div class="form-group">
+                            <input type="hidden" asp-for="Patients" />
+                            <label asp-for="PatientId" class="control-label"></label>
+                            <select asp-for="PatientId" class="form-control" asp-items="@Model.Patients"></select>
+                            <span asp-validation-for="PatientId" class="text-danger"></span>
+                        </div>
+                    }
+                    else
+                    {
+                        <input type="hidden" asp-for="PatientId" value="@(await GetUserId(User))" />
+                    }
+                </div>
             </div>
-            <div class="form-group">
-                <label asp-for="Type" class="control-label"></label>
-                <select asp-for="Type" class="form-control" asp-items="@Html.GetEnumSelectList<VisitType>()"></select>
+                  
+            
+            <div class="row">
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Description" class="control-label"></label>
+                        <textarea asp-for="Description" class="form-control"></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="form-group">
+                        <label asp-for="Recomendations" class="control-label"></label>
+                        <textarea asp-for="Recomendations" class="form-control"></textarea>
+                        <span asp-validation-for="Recomendations" class="text-danger"></span>
+                    </div>
+                </div>
             </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="Doctors" />
-                <label asp-for="DoctorId" class="control-label"></label>
-                <select asp-for="DoctorId" class="form-control" asp-items="@Model.Doctors"></select>
-                <span asp-validation-for="DoctorId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="hidden" asp-for="Patients" />
-                <label asp-for="PatientId" class="control-label"></label>
-                <select asp-for="PatientId" class="form-control" asp-items="@Model.Patients"></select>
-                <span asp-validation-for="PatientId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Recomendations" class="control-label"></label>
-                <input asp-for="Recomendations" class="form-control" />
-                <span asp-validation-for="Recomendations" class="text-danger"></span>
-            </div>
+            
+            
+            
             <div class="form-group">
                 <label asp-for="Referrals" class="control-label"></label>
                 <input asp-for="Referrals" class="form-control" />
@@ -54,16 +115,14 @@
                 <input asp-for="Prescriptions" class="form-control" />
                 <span asp-validation-for="Prescriptions" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group" style="text-align: right">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
